@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Time Tracker</title>
+        <style>
+            body {
+                font-family: "Segoe UI", Tahoma, sans-serif;
+                padding: 15px;
+                background: linear-gradient(135deg, #1f1c2c, #928dab);
+                color: white;
+                width: 300px;
+            }
+            h3 {
+                text-align: center;
+                margin-bottom: 15px;
+                font-weight: 600;
+            }
+            #list div {
+                padding: 8px;
+                margin: 5px 0;
+                border-radius: 8px;
+                display: flex;
+                justify-content: space-between;
+                font-size: 14px;
+            }
+            .productive {
+                background: rgba(0, 255, 0, 0.15);
+                color: #00ff88;
+            }
+            .unproductive {
+                background: rgba(255, 0, 0, 0.15);
+                color: #ff5c5c;
+            }
+            .neutral {
+                background: rgba(255, 255, 255, 0.15);
+                color: #ffffff;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Time Spent Today</h3>
+        <div id="list">Loading...</div>
+        <script src="popup.js"></script>
+    </body>
+</html>
