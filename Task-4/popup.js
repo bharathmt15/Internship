@@ -1,16 +1,18 @@
+// hard coding the productive one's
 const productiveSites = [
     "github.com",
     "stackoverflow.com",
     "w3schools.com",
     "leetcode.com",
 ];
+// hard coding the non-productive one's
 const unproductiveSites = [
     "facebook.com",
     "instagram.com",
     "tiktok.com",
     "twitter.com",
 ];
-
+// setting the local storage to make the extension run
 chrome.storage.local.get("totals", ({totals}) => {
     const container = document.getElementById("list");
     if (!totals) return (container.textContent = "No data yet.");

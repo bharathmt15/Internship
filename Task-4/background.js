@@ -10,10 +10,11 @@ const unproductiveSites = [
     "tiktok.com",
     "twitter.com",
 ];
-
+// creating a object with 2 values(key values)
 let current = {domain: null, start: null};
+// an empty object
 let totals = {};
-
+// function to know which URL we are visting or using
 function getDomain(url) {
     try {
         return new URL(url).hostname.replace(/^www\./, "");
@@ -21,14 +22,14 @@ function getDomain(url) {
         return null;
     }
 }
-
+// checking if any change in the URL to track the time
 function switchSite(url) {
     stopTimer();
     const domain = getDomain(url);
     if (!domain) return;
     current = {domain, start: Date.now()};
 }
-
+// function to stop the timer when tabs are closed
 function stopTimer() {
     if (!current.start) return;
     const timeSpent = Date.now() - current.start;
@@ -47,6 +48,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
         switchSite(tab.url);
     }
 });
-
+// caling the functions
 chrome.alarms.create("saveData", {periodInMinutes: 1});
 chrome.alarms.onAlarm.addListener(() => stopTimer());
+// as comments are not allowed in JSON no nee to write there
