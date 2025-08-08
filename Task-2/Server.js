@@ -34,6 +34,6 @@ io.on("connection", (socket) => {
 });
 
 http.listen(PORT, () => {
-    // connecting a port to the server
+    // connecting a port to the Server
     console.log(`Server running at http://localhost:${PORT}`);
 });
