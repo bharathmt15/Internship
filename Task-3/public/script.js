@@ -86,7 +86,7 @@ shareBtn.addEventListener("click", () => {
     prompt("Share this link to invite others:", url);
 });
 
-// Download
+// Download funcitonalty after editing
 downloadBtn.addEventListener("click", () => {
     const blob = new Blob([editor.value], {type: "text/plain"});
     const a = document.createElement("a");
