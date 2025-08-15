@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Real-Time Collaborative Editor</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="upload-container" id="landing">
+                <input
+                    type="text"
+                    id="usernameInput"
+                    placeholder="Enter your name"
+                />
+                <input type="file" id="fileInput" />
+                <button id="uploadBtn">Upload & Edit</button>
+            </div>
+
+            <div class="toolbar" id="toolbar" style="display: none">
+                <span id="filename"></span>
+                <span id="docIdDisplay"></span>
+                <span id="editorsDisplay"></span>
+                <button id="shareBtn">Share</button>
+                <button id="downloadBtn">Download</button>
+                <button id="modeToggle">Dark/Light</button>
+            </div>
+
+            <textarea
+                id="editor"
+                placeholder="Start typing..."
+                style="display: none"
+            ></textarea>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

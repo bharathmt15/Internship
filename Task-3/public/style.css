@@ -1,0 +1,200 @@
+/*Root elements so that we don't need to write the sytle again and again.*/
+:root {
+    --bg: #121212;
+    --text: #e0e0e0;
+    --toolbar-bg: #1f1f1f;
+    --btn-bg: #4cafeb;
+    --btn-hover: #0077cc;
+    --accent: #ff4081;
+    --editor-bg: #1b1b1b;
+    --shadow: rgba(0, 0, 0, 0.7);
+}
+
+body.light {
+    --bg: #f5f5f5;
+    --text: #111;
+    --toolbar-bg: #fff;
+    --btn-bg: #4a90e2;
+    --btn-hover: #3570c0;
+    --accent: #ff4081;
+    --editor-bg: #fff;
+    --shadow: rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.container {
+    width: 100%;
+    max-width: 950px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.upload-container {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.8s ease;
+}
+
+.upload-container input[type="file"],
+.upload-container input[type="text"] {
+    padding: 0.7rem 1rem;
+    border-radius: 12px;
+    border: 1px solid #444;
+    background: var(--toolbar-bg);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-container input[type="file"]:hover,
+.upload-container input[type="text"]:hover {
+    border-color: var(--accent);
+}
+
+.upload-container button {
+    padding: 0.7rem 1.5rem;
+    background: var(--btn-bg);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.upload-container button:hover {
+    background: var(--btn-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--shadow);
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--toolbar-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px var(--shadow);
+    font-size: 14px;
+    color: var(--text);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    animation: slideIn 0.6s ease;
+}
+
+.toolbar button {
+    background: var(--btn-bg);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 13px;
+}
+
+.toolbar button:hover {
+    background: var(--btn-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+/* Editor */
+#editor {
+    width: 100%;
+    height: 70vh;
+    padding: 1rem;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 2px solid #333;
+    resize: none;
+    background: var(--editor-bg);
+    color: var(--text);
+    box-shadow: 0 8px 20px var(--shadow);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.8s ease;
+}
+
+#editor:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 10px 25px rgba(255, 64, 129, 0.5);
+}
+
+/* Editor names */
+#editorsDisplay {
+    font-weight: 500;
+    color: var(--accent);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #editor {
+        height: 60vh;
+        font-size: 14px;
+    }
+    .upload-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .toolbar {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .upload-container button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #editor {
+        height: 50vh;
+        font-size: 13px;
+    }
+    .toolbar {
+        font-size: 13px;
+    }
+}
