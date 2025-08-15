@@ -1,5 +1,5 @@
-const socket = io();
-const editor = document.getElementById("editor");
+const socket = io(); // using common JS module to use the input and output
+const editor = document.getElementById("editor"); // getting the HTML elements
 const uploadBtn = document.getElementById("uploadBtn");
 const fileInput = document.getElementById("fileInput");
 const usernameInput = document.getElementById("usernameInput");
@@ -20,7 +20,7 @@ const params = new URLSearchParams(window.location.search);
 const sharedDocId = params.get("doc");
 
 if (sharedDocId) {
-    // Hide upload section, prompt for name only
+    // Hide upload section, alert for name only
     landing.innerHTML = `
         <input type="text" id="usernameInput" placeholder="Enter your name to join" />
         <button id="joinBtn">Join</button>
@@ -40,7 +40,7 @@ if (sharedDocId) {
     });
 }
 
-// Upload new document
+// uploading a new document to edit.
 uploadBtn?.addEventListener("click", async () => {
     username = usernameInput.value.trim();
     if (!username) return alert("Enter your name!");
@@ -64,7 +64,7 @@ uploadBtn?.addEventListener("click", async () => {
     socket.emit("join-doc", {docId, username});
 });
 
-// Handle live edits
+// Handle live edits adding sockets to handle live edits
 editor.addEventListener("input", () => {
     if (!docId || !username) return;
     socket.emit("edit-doc", editor.value);
@@ -80,7 +80,7 @@ socket.on("editors-update", (editors) => {
     editorsDisplay.textContent = `Editing: ${editors.join(", ")}`;
 });
 
-// Share button
+// Share button to share the link(remember only works when app is hosted)
 shareBtn.addEventListener("click", () => {
     const url = `${window.location.origin}?doc=${docId}`;
     prompt("Share this link to invite others:", url);

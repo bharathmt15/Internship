@@ -1,15 +1,15 @@
-const express = require("express");
-const http = require("http");
-const {Server} = require("socket.io");
-const multer = require("multer");
-const fs = require("fs");
-const path = require("path");
-const pdfParse = require("pdf-parse");
-const mammoth = require("mammoth");
+const express = require("express"); // requiring express module
+const http = require("http"); // requiring http module
+const {Server} = require("socket.io"); // requiring socket module
+const multer = require("multer"); // requiring multer module
+const fs = require("fs"); // requiring fs(file system) module
+const path = require("path"); // requring path module to connect the URL
+const pdfParse = require("pdf-parse"); // requring the pdf parser so that text wont get disturbed
+const mammoth = require("mammoth"); // mamooth for docs files to convert into HTML.
 
-const app = express();
-const server = http.createServer(app);
-const io = new Server(server);
+const app = express(); // calling the express function
+const server = http.createServer(app); // creating a http server
+const io = new Server(server); // assigning the server to IO.
 
 app.use(express.static("public"));
 
@@ -17,7 +17,7 @@ const documents = {}; // { docId: { content, editors: [] } }
 
 const upload = multer({dest: "uploads/"});
 
-// Upload file route
+// using post method to upload a file
 app.post("/upload", upload.single("file"), async (req, res) => {
     const filePath = req.file.path;
     const ext = path.extname(req.file.originalname).toLowerCase();
@@ -46,7 +46,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     res.json({docId, content});
 });
 
-// Socket.IO real-time
+// checking if socket connection is properly done or not.
 io.on("connection", (socket) => {
     socket.on("join-doc", ({docId, username}) => {
         socket.join(docId);
